@@ -41,3 +41,25 @@ console.log(typeof outsideTemp);
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // stack (Primitive), Heap (Non-Primitive)
+
+
+
+let aname = "Salman"
+
+let anotherName = aname
+anotherName = "You"
+
+console.log(aname);
+console.log(anotherName);
+
+let userOne = {
+    email: "user@gmail.com",
+    upi: "user@upi",
+}
+
+let userTwo = userOne  
+
+userTwo.email = "userTwo@gmail.com"
+
+console.log(userOne.email);
+console.log(userTwo.email);
