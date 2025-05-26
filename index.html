@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Simple Calculator</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, select, button {
+      display: block;
+      margin: 10px 0;
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+    }
+    #output {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Simple Calculator</h2>
+
+  <label for="num1">Enter number A:</label>
+  <input id="num1" type="number" step="any" placeholder="e.g. 10.5">
+
+  <label for="num2">Enter number B:</label>
+  <input id="num2" type="number" step="any" placeholder="e.g. 2.3">
+
+  <label for="option">Select operation:</label>
+  <select id="option">
+    <option value="+">+</option>
+    <option value="-">-</option>
+    <option value="*">×</option>
+    <option value="/">÷</option>
+    <option value="%">%</option>
+  </select>
+
+  <button id="submit">Calculate</button>
+
+  <p id="output"></p>
+
+  <script>
+    $('#submit').on('click', function() {
+      let num1 = parseFloat($('#num1').val());
+      let num2 = parseFloat($('#num2').val());
+      let operator = $('#option').val();
+
+      if (isNaN(num1) || isNaN(num2)) {
+        $('#output').text('Please enter valid numbers.');
+        return;
+      }
+
+      let result;
+      switch (operator) {
+        case '+':
+          result = num1 + num2;
+          break;
+        case '-':
+          result = num1 - num2;
+          break;
+        case '*':
+          result = num1 * num2;
+          break;
+        case '/':
+          if (num2 === 0) {
+            $('#output').text('Error: Division by zero.');
+            return;
+          }
+          result = num1 / num2;
+          break;
+        case '%':
+          result = num1 % num2;
+          break;
+        default:
+          $('#output').text('Invalid operation.');
+          return;
+      }
+
+      // Round to 2 decimal places
+      $('#output').text('Result: ' + result.toFixed(2));
+    });
+  </script>
+
+</body>
+</html>
